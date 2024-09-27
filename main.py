@@ -1,5 +1,9 @@
+"""module exercice github sur les fichiers
+"""
+
 #### Imports et définition des variables globales
-import random
+
+import csv
 
 FILENAME = "listes.csv"
 
@@ -14,39 +18,104 @@ def read_data(filename):
     Returns:
         list: le contenu du fichier (1 list par ligne)
     """
-    l = []
-    return l
+    with open(filename, mode='r', encoding='utf8') as fichier :
+        liste = csv.reader(fichier, delimiter=';')
+        data_provisoir = list(liste)
+        data = []
+        for liste in data_provisoir :
+            data_liste =[]
+            for element in liste :
+                data_liste.append(int(element))
+            data.append(data_liste)
+    return data
 
 def get_list_k(data, k):
-    l = []
-    return l
+    """retourne la k-ieme liste de la liste data
+
+    Args : 
+        data : liste de listes
+        k : entier
+    
+    return :
+    liste : k-ieme liste de data
+    """
+    liste = data[k]
+    return liste
 
 def get_first(l):
-    return None
+    """retourne le premier element de la liste
+
+    Args : 
+        l : liste
+    
+    return :
+    element : int, premier element de liste
+    """
+    element = l[0]
+    return element
 
 def get_last(l):
-    return None
+    """retourne le dernier element de la liste
+
+    Args : 
+        l : liste
+    
+    return :
+    element : int, dernier element de liste
+    """
+    element = l[-1]
+    return element
 
 def get_max(l):
-    return None
+    """retourne le plus grand element de la liste
+
+    Args : 
+        l : liste
+    
+    return :
+    element : int, plus grand element de liste
+    """
+    element = max(l)
+    return element
 
 def get_min(l):
-    return None
+    """retourne le plus petit element de la liste
+
+    Args : 
+        l : liste
+    
+    return :
+    element : int, plus petit element de liste
+    """
+    element = min(l)
+    return element
 
 def get_sum(l):
-    return None
+    """retourne la somme de tous les elements de la liste
+
+    Args : 
+        l : liste
+    
+    return :
+    somme : int, somme des elements de liste
+    """
+    somme = 0
+    for element in l :
+        somme += element
+    return somme
 
 
 #### Fonction principale
 
 
 def main():
-    pass
-    # data = read_data(FILENAME)
-    # for i, l in enumerate(data):
-    #     print(i, l)
-    # k = 37
-    # print(k, get_list_k(data, 37))
+    """retourne des tests sur nos fonctions secondaires
+    """
+    data = read_data(FILENAME)
+    for i, l in enumerate(data):
+        print(i, l)
+    k = 37
+    print(k, get_list_k(data, 37))
 
 
 if __name__ == "__main__":
